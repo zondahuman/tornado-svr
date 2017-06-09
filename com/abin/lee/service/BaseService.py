@@ -20,6 +20,25 @@ class OrderService():
             print e
         return orderEnum
 
+    def find_by_id(self, id):
+        orderInfo = None
+        try:
+            orderDao = BaseDao.OrderDao()
+            orderInfo  = orderDao.find_by_id(id)
+            print "orderInfo", orderInfo
+        except Exception, e:
+            print e
+        return orderInfo
+
+
+    def find_by_all(self):
+        try:
+            orderDao = BaseDao.OrderDao()
+            orderInfos  = orderDao.find_all()
+            print "orderInfos", orderInfos
+        except Exception, e:
+            print e
+        return orderInfos
 
 
 

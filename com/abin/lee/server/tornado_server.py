@@ -28,6 +28,8 @@ if __name__ == '__main__':
              (r'/orderAdd', OrderController.OrderHandler),
              (r'/orderInsert', OrderController.OrderAddPostHandler),
              (r'/orderPostInsert', OrderController.OrderAddPostJsonHandler),
+             (r'/orderFindById', OrderController.OrderFindByIdandler),
+             (r'/orderFindAll', OrderController.OrderFindAllHandler),
              (r'/call', ExternalController.CallHandler),
              (r'/reverse/(\w+)' , ReverseHandle),
             ]

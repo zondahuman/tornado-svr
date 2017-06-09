@@ -64,3 +64,30 @@ class OrderAddPostJsonHandler(tornado.web.RequestHandler):
         orderEnum = orderService.insertObj(id, name, age, create_time, update_time, version)
         self.write(orderEnum)
 
+class OrderFindByIdandler(tornado.web.RequestHandler):
+    def post(self):
+        id = self.get_argument('id')
+        print "id=", id
+        orderService = BaseService.OrderService()
+        orderInfo = orderService.find_by_id(id)
+        result = json.dumps(orderInfo)
+        self.write(result)
+
+class OrderFindAllHandler(tornado.web.RequestHandler):
+    def post(self):
+        orderService = BaseService.OrderService()
+        orderInfo = orderService.find_by_all()
+        result = json.dumps(orderInfo)
+        self.write(result)
+
+
+
+
+
+
+
+
+
+
+
+
