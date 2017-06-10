@@ -6,6 +6,8 @@ from enum import Enum
 class OrderEnum(Enum):
     SUCCESS = "SUCCESS"
     EXCEPTION = "EXCEPTION"
+    INIT = "INIT"
+    ERROR = "ERROR"
 
 
 

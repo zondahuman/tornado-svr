@@ -46,7 +46,7 @@ class HttpService():
         return result
 
 
-    def http_get(self, http_url,headersDict):
+    def http_get_header(self, http_url,headersDict):
         request = urllib2.Request(http_url)
         for (key, value) in headersDict.items():
             request.add_header(key, value)
@@ -55,8 +55,8 @@ class HttpService():
         return result
 
 
-    def http_get_param(self, http_url, json, headersDict):
-        body_value  = urllib.urlencode(json)
+    def http_get_param(self, http_url, body, headersDict):
+        body_value  = urllib.urlencode(body)
         request = urllib2.Request(http_url+"?%s" % body_value)
         for (key, value) in headersDict.items():
             request.add_header(key, value)
@@ -65,13 +65,27 @@ class HttpService():
         return result
 
 
+    def http_get_param_body(self, http_url, body):
+        body_value  = urllib.urlencode(body)
+        request = urllib2.Request(http_url+"?%s" % body_value)
+        # for (key, value) in headersDict.items():
+        #     request.add_header(key, value)
+        response = urllib2.urlopen(request)
+        result = response.read()
+        return result
 
 
+    def http_get_body(self, http_url):
+        request = urllib2.Request(http_url)
+        response = urllib2.urlopen(request)
+        result = response.read()
+        return result
 
 
-
-
-
+    def http_get_body1(self, http_url):
+        response = urllib.urlopen(http_url)
+        result = response.read()
+        return result
 
 
 
