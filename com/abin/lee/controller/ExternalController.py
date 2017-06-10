@@ -76,7 +76,7 @@ class ExternalHandler(tornado.web.RequestHandler):
          return
 
 
-class ExternalWeatherHandler(tornado.web.RequestHandler):
+class ExternalRegionHandler(tornado.web.RequestHandler):
     def post(self):
         orderEnum = OrderEnum.EXCEPTION
         id = self.get_argument('id')
@@ -90,6 +90,22 @@ class ExternalWeatherHandler(tornado.web.RequestHandler):
 
 
 
+class ExternalNasaHandler(tornado.web.RequestHandler):
+    @tornado.web.asynchronous
+    @tornado.gen.coroutine
+    def get(self):
+        externalService = ExternalService.LendService()
+        body = externalService.callNasa()
+        print  'requestBody=', body
+
+
+class ExternalIpHandler(tornado.web.RequestHandler):
+    @tornado.web.asynchronous
+    @tornado.gen.coroutine
+    def get(self):
+        externalService = ExternalService.LendService()
+        body = externalService.callIp()
+        print  'requestBody=', body
 
 
 

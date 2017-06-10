@@ -3,6 +3,9 @@
 import datetime
 import json
 
+from tornado import ioloop
+from tornado.httpclient import AsyncHTTPClient
+
 from com.abin.lee.dao import ExternalDao
 from com.abin.lee.enums.GlobalConstants import OrderEnum
 from com.abin.lee.model import ExternalModel
@@ -48,3 +51,74 @@ class LendService():
         result = httpService.http_get_param_body(http_url, lendDict)
         print "result=", result
         return (lendDict, result)
+
+
+
+    def callNasa(self):
+        http_url = "https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo"
+        http_client = AsyncHTTPClient() # we initialize our http client instance
+        response = yield http_client.fetch(http_url, self.handle_request) # here we try
+        # ioloop.IOLoop.instance().start()
+        self.on_response(response)
+
+
+
+    def callIp(self):
+        http_url = "http://ip.jsontest.com"
+        http_client = AsyncHTTPClient() # we initialize our http client instance
+        http_client.fetch(http_url, self.handle_response) # here we try
+        # ioloop.IOLoop.instance().start()
+
+    def on_response(self, resp):
+         body = json.loads(resp.body)
+         print 'body=',body
+         if body == None:
+             self.write('error')
+         else:
+             self.write(body)
+             # self.write("SUCCESS")
+         return
+
+    def handle_response(self, response):
+        '''callback needed when a response arrive'''
+        if response.error:
+            print "Error:", response.error
+            # self.
+        else:
+            print 'called'
+            print response.body
+            self.write(response.body)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

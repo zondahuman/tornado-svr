@@ -15,7 +15,7 @@ from tornado.options import define, options
 #如果一个与define语句中同名的设置在命令行中被给出，那么它将成为全局的options的一个属性 即 options.port 相当于define的url的port
 from com.abin.lee.controller import OrderController,ExternalController
 from com.abin.lee.controller.BaseController import Indexhandler,Wraphandler,Stephandler, ReverseHandle
-from com.abin.lee.controller.ExternalController import ExternalWeatherHandler
+from com.abin.lee.controller.ExternalController import ExternalNasaHandler, ExternalIpHandler, ExternalRegionHandler
 
 define ("port", default=8080, help="run on the given port", type=int)
 
@@ -35,7 +35,9 @@ if __name__ == '__main__':
              (r'/orderUpdateById', OrderController.OrderUpdateByIdHandler),
              (r'/call', ExternalController.CallHandler),
              (r'/reverse/(\w+)' , ReverseHandle),
-             (r'/externalWeather' , ExternalWeatherHandler),
+             (r'/externalRegion' , ExternalRegionHandler),
+             (r'/externalNasa' , ExternalNasaHandler),
+             (r'/externalIp' , ExternalIpHandler),
             ]
     app = tornado.web.Application(handlers)
     http_server = tornado.httpserver.HTTPServer(app)

@@ -13,7 +13,7 @@ class LendTest(unittest.TestCase):
         dictOrder["id"] = 1
         dictOrder["user_id"] = TimeStampUtil.getTimestamp()
         dictOrder["token"] = '9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee'
-        http_url = "http://localhost:8080/externalWeather"
+        http_url = "http://localhost:8080/externalRegion"
         content = json.dumps(dictOrder)
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"
@@ -33,5 +33,60 @@ class LendTest(unittest.TestCase):
         # result = httpService.http_get_param(http_url,dictOrder, dictHeader)
         print "result=", result
 
-        # f=urllib.urlopen("http://m.cnblogs.com/")
-        # s=f.read()
+    def test_call_nasa(self):
+        dictOrder = {}
+        dictOrder["id"] = 1
+        dictOrder["user_id"] = TimeStampUtil.getTimestamp()
+        dictOrder["token"] = '9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee'
+        http_url = "http://localhost:8080/externalNasa"
+        content = json.dumps(dictOrder)
+        dictHeader = {}
+        dictHeader["source"] = "UNITTEST1"
+        httpService = HttpService()
+        result = httpService.http_get_body(http_url)
+        # result = httpService.http_get_param(http_url,dictOrder, dictHeader)
+        print "result=", result
+
+
+    def test_call_ip(self):
+        dictOrder = {}
+        dictOrder["id"] = 1
+        dictOrder["user_id"] = TimeStampUtil.getTimestamp()
+        dictOrder["token"] = '9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee'
+        http_url = "http://localhost:8080/externalIp"
+        content = json.dumps(dictOrder)
+        dictHeader = {}
+        dictHeader["source"] = "UNITTEST1"
+        httpService = HttpService()
+        result = httpService.http_get_body(http_url)
+        # result = httpService.http_get_param(http_url,dictOrder, dictHeader)
+        print "result=", result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
