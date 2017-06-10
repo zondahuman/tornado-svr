@@ -31,6 +31,7 @@ if __name__ == '__main__':
              (r'/orderFindById', OrderController.OrderFindByIdandler),
              (r'/orderFindAll', OrderController.OrderFindAllHandler),
              (r'/orderFindByParam', OrderController.OrderFindByParamHandler),
+             (r'/orderUpdateById', OrderController.OrderUpdateByIdHandler),
              (r'/call', ExternalController.CallHandler),
              (r'/reverse/(\w+)' , ReverseHandle),
             ]

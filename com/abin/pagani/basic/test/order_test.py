@@ -52,6 +52,17 @@ class OrderTest(unittest.TestCase):
         result = httpService.http_post(http_url,dictOrder, dictHeader)
         print "result=", result
 
+    def test_order_find_by_param(self):
+        dictOrder = {}
+        dictOrder["key"] = 'name'
+        dictOrder["value"] = 'abin'
+        http_url = "http://localhost:8080/orderFindByParam"
+        dictHeader = {}
+        dictHeader["source"] = "UNITTEST"
+        httpService = HttpService()
+        result = httpService.http_post(http_url,dictOrder, dictHeader)
+        print "result=", result
+
     def test_order_add_params(self):
         dictOrder = {}
         dictOrder["id"] = 1
@@ -87,7 +98,17 @@ class OrderTest(unittest.TestCase):
 
 
 
-
+    def test_order_find_by_param(self):
+        dictOrder = {}
+        dictOrder["id"] = 29
+        dictOrder["key"] = 'name'
+        dictOrder["value"] = 'paul'
+        http_url = "http://localhost:8080/orderUpdateById"
+        dictHeader = {}
+        dictHeader["source"] = "UNITTEST"
+        httpService = HttpService()
+        result = httpService.http_post(http_url,dictOrder, dictHeader)
+        print "result=", result
 
 
 

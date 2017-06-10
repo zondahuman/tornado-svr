@@ -24,3 +24,17 @@ def encode_json_bean(object):
             'version': object.version,
         }
         raise TypeError('Cannot serialize object of type %s' % type(object))
+
+
+if __name__ == '__main__':
+     def conditionByParam(self, key):
+        switch = {
+            "id":lambda id:OrderInfoVo.id,
+            "name":lambda name:OrderInfoVo.name,
+            "age":lambda age:OrderInfoVo.age,
+        }
+
+        try:
+            print switch["age"]("age")
+        except KeyError as e:
+            pass

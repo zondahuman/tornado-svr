@@ -85,10 +85,24 @@ class OrderFindAllHandler(tornado.web.RequestHandler):
 
 class OrderFindByParamHandler(tornado.web.RequestHandler):
     def post(self):
+        key = self.get_argument('key')
+        value = self.get_argument('value')
+        print "key=", key, ", value=", value
         orderService = BaseService.OrderService()
-        orderInfo = orderService.find_by_all()
-        result = simplejson.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean, cls=DateUtil.DateEncoder)
+        orderInfo = orderService.find_by_params(key, value)
+        result = json.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean)
         self.write(result)
+
+class OrderUpdateByIdHandler(tornado.web.RequestHandler):
+    def post(self):
+        orderEnum = OrderEnum.EXCEPTION
+        id = self.get_argument('id')
+        key = self.get_argument('key')
+        value = self.get_argument('value')
+        print "key=", key, ", value=", value
+        orderService = BaseService.OrderService()
+        orderEnum = orderService.update_by_id(id, key, value)
+        self.write(orderEnum)
 
 
 

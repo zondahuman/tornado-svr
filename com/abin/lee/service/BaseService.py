@@ -51,3 +51,13 @@ class OrderService():
         except Exception, e:
             print e
         return orderInfoList
+
+    def update_by_id(self, id, key, value):
+        orderEnum = OrderEnum.EXCEPTION
+        try:
+            orderDao = BaseDao.OrderDao()
+            orderEnum  = orderDao.update_by_id(id, key, value)
+            print "orderEnum", orderEnum
+        except Exception, e:
+            print e
+        return orderEnum
