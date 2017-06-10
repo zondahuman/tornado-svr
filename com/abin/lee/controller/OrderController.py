@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 # coding:utf-8
-
-#  http://localhost:8080/step?id=5&name=abin
 import datetime
 import json
 
+import simplejson
 import tornado
 import tornado.web
 import tornado.gen
 import tornado.httpclient
-
 from com.abin.lee.enums.GlobalConstants import OrderEnum
 from com.abin.lee.service import BaseService
+from com.abin.lee.pojo.vo import OridinaryViewObject
 
 #  http://localhost:8080/orderAdd?id=5&name=abin&age=25&version=0
+from com.abin.lee.util import DateUtil
+
+
 class OrderHandler(tornado.web.RequestHandler):
     def get(self):
         orderEnum = OrderEnum.EXCEPTION
@@ -77,8 +79,28 @@ class OrderFindAllHandler(tornado.web.RequestHandler):
     def post(self):
         orderService = BaseService.OrderService()
         orderInfo = orderService.find_by_all()
-        result = json.dumps(orderInfo)
+        # result = simplejson.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean)
+        result = simplejson.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean, cls=DateUtil.DatetimeJSONEncoder)
         self.write(result)
+
+class OrderFindByParamHandler(tornado.web.RequestHandler):
+    def post(self):
+        orderService = BaseService.OrderService()
+        orderInfo = orderService.find_by_all()
+        result = simplejson.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean, cls=DateUtil.DateEncoder)
+        self.write(result)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

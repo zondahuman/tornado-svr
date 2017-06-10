@@ -12,7 +12,7 @@ pip install pyMySQL
 
 pip install poster
 
-
+pip install simplejson
 
 
 

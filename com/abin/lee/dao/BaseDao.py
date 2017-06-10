@@ -3,6 +3,7 @@
 from com.abin.lee.enums.GlobalConstants import OrderEnum
 from com.abin.lee.model.PersistentModel import OrderInfo
 from com.abin.lee.util import DaoUtil,ModelUtil
+from com.abin.lee.pojo.vo import OridinaryViewObject
 
 
 class OrderDao():
@@ -35,14 +36,45 @@ class OrderDao():
         return row_as_dict
 
     def find_all(self):
-        row_as_dict = {}
+        result = []
         orderDao = DaoUtil.DaoGeneric()
         session = orderDao.getSession()
         try:
             for row in session.query(OrderInfo).all():
-                row_as_dict.append(ModelUtil.row2dict(row))
+                orderInfoVo = OridinaryViewObject.OrderInfoVo(id=row.id, name=row.name, age=row.age,create_time=row.create_time,update_time=row.update_time,version=row.version)
+                result.append(orderInfoVo)
             session.commit()
         except Exception, e:
             print e
             session.rollback()
-        return row_as_dict
+        return  result
+
+
+
+    def find_by_params(self, key, value):
+        result = []
+        orderDao = DaoUtil.DaoGeneric()
+        session = orderDao.getSession()
+        try:
+            for row in session.query(OrderInfo).filter_by(key=value).all():
+                orderInfoVo = OridinaryViewObject.OrderInfoVo(id=row.id, name=row.name, age=row.age,create_time=row.create_time,update_time=row.update_time,version=row.version)
+                result.append(orderInfoVo)
+            session.commit()
+        except Exception, e:
+            print e
+            session.rollback()
+        return  result
+
+
+
+
+
+
+
+
+
+
+
+
+
+

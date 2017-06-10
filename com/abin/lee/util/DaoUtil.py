@@ -1,9 +1,16 @@
 #!/usr/bin/env python
 # coding:utf-8
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine, MetaData
+from sqlalchemy.ext.declarative import declarative_base, DeclarativeMeta
+from sqlalchemy.orm import sessionmaker, scoped_session
+from tornado.gen import engine
 
+db_session = scoped_session(sessionmaker(autocommit=False,
+                                         autoflush=False,
+                                         bind=engine))
+Base = declarative_base(metadata=MetaData(), metaclass=DeclarativeMeta)
+Base.query = db_session.query_property()
 
 class DaoGeneric():
 

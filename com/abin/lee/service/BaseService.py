@@ -32,6 +32,7 @@ class OrderService():
 
 
     def find_by_all(self):
+        orderInfos = None
         try:
             orderDao = BaseDao.OrderDao()
             orderInfos  = orderDao.find_all()
@@ -41,4 +42,12 @@ class OrderService():
         return orderInfos
 
 
-
+    def find_by_params(self, key, value):
+        orderInfoList = None
+        try:
+            orderDao = BaseDao.OrderDao()
+            orderInfoList  = orderDao.find_by_params(key, value)
+            print "orderInfoList", orderInfoList
+        except Exception, e:
+            print e
+        return orderInfoList
