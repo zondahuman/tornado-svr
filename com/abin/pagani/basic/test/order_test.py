@@ -98,7 +98,7 @@ class OrderTest(unittest.TestCase):
 
 
 
-    def test_order_find_by_param(self):
+    def test_order_update_by_id(self):
         dictOrder = {}
         dictOrder["id"] = 29
         dictOrder["key"] = 'name'

@@ -19,8 +19,8 @@ def encode_json_bean(object):
             'id': object.id,
             'name': object.name,
             'age': object.age,
-            'create_time': object.create_time.strftime('%Y-%m-%d %H:%M:%S'),
-            'update_time': object.update_time.strftime('%Y-%m-%d %H:%M:%S'),
+            'create_time': object.create_time,
+            'update_time': object.update_time,
             'version': object.version,
         }
         raise TypeError('Cannot serialize object of type %s' % type(object))
