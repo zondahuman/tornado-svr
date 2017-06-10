@@ -18,7 +18,7 @@ class HttpService():
         request = urllib2.Request(http_url, body_value)
         for (key, value) in headersDict.items():
             request.add_header(key, value)
-        result = urllib2.urlopen(request).read()
+        result = urllib2.urlopen(request, timeout=60).read()
         return result
 
     # multipart/form-data
@@ -29,7 +29,7 @@ class HttpService():
         # 如果有请求头数据，则添加请求头
         for (key, value) in headersDict.items():
             request.add_header(key, value)
-        result = urllib2.urlopen(request ).read()
+        result = urllib2.urlopen(request, timeout=60).read()
         return result
 
 
@@ -50,7 +50,7 @@ class HttpService():
         request = urllib2.Request(http_url)
         for (key, value) in headersDict.items():
             request.add_header(key, value)
-        response = urllib2.urlopen(request)
+        response = urllib2.urlopen(request, timeout=60)
         result = response.read()
         return result
 
@@ -60,7 +60,7 @@ class HttpService():
         request = urllib2.Request(http_url+"?%s" % body_value)
         for (key, value) in headersDict.items():
             request.add_header(key, value)
-        response = urllib2.urlopen(request)
+        response = urllib2.urlopen(request, timeout=60)
         result = response.read()
         return result
 
@@ -70,14 +70,14 @@ class HttpService():
         request = urllib2.Request(http_url+"?%s" % body_value)
         # for (key, value) in headersDict.items():
         #     request.add_header(key, value)
-        response = urllib2.urlopen(request)
+        response = urllib2.urlopen(request, timeout=60)
         result = response.read()
         return result
 
 
     def http_get_body(self, http_url):
         request = urllib2.Request(http_url)
-        response = urllib2.urlopen(request)
+        response = urllib2.urlopen(request, timeout=60)
         result = response.read()
         return result
 

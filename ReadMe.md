@@ -1,4 +1,4 @@
-Trodano Web:   tornado, sqlalchemy, orm   
+Trodano Web:   tornado, sqlalchemy, orm
 
 pip install tornado
 
