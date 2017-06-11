@@ -10,6 +10,12 @@ class OrderEnum(Enum):
     ERROR = "ERROR"
 
 
+class MessageEnum(Enum):
+    SUCCESS = "SUCCESS"
+    EXCEPTION = "EXCEPTION"
+    INIT = "INIT"
+    ERROR = "ERROR"
+
 
 
 

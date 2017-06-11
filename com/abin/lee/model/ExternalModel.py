@@ -27,3 +27,16 @@ class LendInfo(DaoUtil.Base):
     update_time = Column("update_time", DateTime)
     version = Column("version", Integer)
 
+class LendUser(DaoUtil.Base):
+    __tablename__ =  'lend_user'
+
+    id = Column("id", Integer, primary_key=True)
+    lendId = Column("Lend_id", String(100), nullable=False)
+    userName = Column("user_name", String(500))
+    email = Column("email", Text)
+    age = Column("age", Integer)
+    idNo = Column("id_no", String(100))
+    userId = Column("user_id", Integer)
+    createTime = Column("create_time", DateTime)
+    updateTime = Column("update_time", DateTime)
+    version = Column("version", Integer)

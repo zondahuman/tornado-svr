@@ -3,7 +3,7 @@
 # 创建对象的基类:
 import json
 
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String, Date, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 
@@ -25,3 +25,41 @@ class OrderInfo(DaoUtil.Base):
     update_time = Column(Date)
     version = Column(Integer)
     query = DBSession.query_property()
+
+
+class TeamInfo(DaoUtil.Base):
+    __tablename__ =  'team_info'
+
+    id = Column("id", Integer, primary_key=True)
+    teamName = Column("team_name",String(100))
+    orderId = Column("order_id",Integer)
+    createTime = Column("create_time", DateTime)
+    updateTime = Column("update_time", DateTime)
+    version = Column("version", Integer)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

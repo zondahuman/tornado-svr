@@ -16,6 +16,8 @@ from tornado.options import define, options
 from com.abin.lee.controller import OrderController,ExternalController
 from com.abin.lee.controller.BaseController import Indexhandler,Wraphandler,Stephandler, ReverseHandle
 from com.abin.lee.controller.ExternalController import ExternalNasaHandler, ExternalIpHandler, ExternalRegionHandler
+from com.abin.lee.controller.LendUserController import LendUserInfoHandler
+from com.abin.lee.controller.TeamController import TeamAddHandler
 
 define ("port", default=8080, help="run on the given port", type=int)
 
@@ -38,6 +40,8 @@ if __name__ == '__main__':
              (r'/externalRegion' , ExternalRegionHandler),
              (r'/externalNasa' , ExternalNasaHandler),
              (r'/externalIp' , ExternalIpHandler),
+             (r'/teamAdd' , TeamAddHandler),
+             (r'/lendUserAdd' , LendUserInfoHandler),
             ]
     app = tornado.web.Application(handlers)
     http_server = tornado.httpserver.HTTPServer(app)
