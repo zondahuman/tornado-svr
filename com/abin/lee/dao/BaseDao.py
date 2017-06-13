@@ -30,7 +30,14 @@ class OrderDao():
         orderDao = DaoUtil.DaoGeneric()
         session = orderDao.getSession()
         try:
+            result_list = []
             for row in session.query(OrderInfo).filter_by(id=id).all():
+                # result_list.append(row)
+                # result_list.append({
+                #     'age': row.age,
+                #     'id': row.id
+                # })
+                # print row.age
                 row_as_dict = ModelUtil.row2dict(row)
             session.commit()
         except Exception, e:
@@ -39,18 +46,24 @@ class OrderDao():
         return row_as_dict
 
     def find_all(self):
-        result = []
+        result_list = []
         orderDao = DaoUtil.DaoGeneric()
         session = orderDao.getSession()
         try:
             for row in session.query(OrderInfo).all():
-                orderInfoVo = OridinaryViewObject.OrderInfoVo(id=row.id, name=row.name, age=row.age,create_time=row.create_time,update_time=row.update_time,version=row.version)
-                result.append(orderInfoVo)
+                result_list.append({
+                    'id':row.id,
+                    'name': row.name,
+                    'age': row.age,
+                    'create_time': row.create_time,
+                    'update_time': row.update_time,
+                    'version': row.version
+                })
             session.commit()
         except Exception, e:
             print e
             session.rollback()
-        return  result
+        return  result_list
 
     def find_by_params(self, key, value):
         result = []
