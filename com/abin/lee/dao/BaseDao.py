@@ -71,8 +71,9 @@ class OrderDao():
         session = orderDao.getSession()
         try:
             for row in session.query(OrderInfo).filter_by(name=value).all():
-                orderInfoVo = OridinaryViewObject.OrderInfoVo(id=row.id, name=row.name, age=row.age,create_time=row.create_time,update_time=row.update_time,version=row.version)
-                result.append(orderInfoVo)
+                # orderInfoVo = OridinaryViewObject.OrderInfoVo(id=row.id, name=row.name, age=row.age,create_time=row.create_time,update_time=row.update_time,version=row.version)
+                # result.append(orderInfoVo)
+                result.append(row[0])
             session.commit()
         except Exception, e:
             print e
