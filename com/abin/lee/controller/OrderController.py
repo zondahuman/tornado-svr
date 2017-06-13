@@ -80,7 +80,7 @@ class OrderFindAllHandler(tornado.web.RequestHandler):
         orderService = BaseService.OrderService()
         orderInfo = orderService.find_by_all()
         # result = simplejson.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean)
-        result = simplejson.dumps(orderInfo, cls=DateUtil.DatetimeJSONEncoder)
+        result = simplejson.dumps(orderInfo)
         self.write(result)
 
 class OrderFindByParamHandler(tornado.web.RequestHandler):

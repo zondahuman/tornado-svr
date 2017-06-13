@@ -26,24 +26,24 @@ class OrderDao():
 
 
     def find_by_id(self, id):
-        row_as_dict = {}
+        result_list = []
         orderDao = DaoUtil.DaoGeneric()
         session = orderDao.getSession()
         try:
-            result_list = []
             for row in session.query(OrderInfo).filter_by(id=id).all():
-                # result_list.append(row)
-                # result_list.append({
-                #     'age': row.age,
-                #     'id': row.id
-                # })
-                # print row.age
-                row_as_dict = ModelUtil.row2dict(row)
+                   result_list.append({
+                    'id':row.id,
+                    'name': row.name,
+                    'age': row.age,
+                    'create_time': row.create_time.strftime("%Y-%m-%d %H:%M:%S"),
+                    'update_time': row.update_time.strftime("%Y-%m-%d %H:%M:%S"),
+                    'version': row.version
+                })
             session.commit()
         except Exception, e:
             print e
             session.rollback()
-        return row_as_dict
+        return result_list
 
     def find_all(self):
         result_list = []
@@ -55,8 +55,8 @@ class OrderDao():
                     'id':row.id,
                     'name': row.name,
                     'age': row.age,
-                    'create_time': row.create_time,
-                    'update_time': row.update_time,
+                    'create_time': row.create_time.strftime("%Y-%m-%d %H:%M:%S"),
+                    'update_time': row.update_time.strftime("%Y-%m-%d %H:%M:%S"),
                     'version': row.version
                 })
             session.commit()
