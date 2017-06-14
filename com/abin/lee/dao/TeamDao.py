@@ -31,7 +31,7 @@ class TeamInfoDao():
             for row in session.query(TeamInfo.id,TeamInfo.orderId,TeamInfo.teamName,OrderInfo.name, OrderInfo.age, TeamInfo.version).join(OrderInfo).filter(TeamInfo.orderId==id).all():
                 result.append({
                     'id':row.id,
-                    'orderId': row.orderId
+                    'orderId': row.orderId,
                     'age': row.age,
                     'create_time': row.create_time.strftime("%Y-%m-%d %H:%M:%S"),
                     'update_time': row.update_time.strftime("%Y-%m-%d %H:%M:%S"),
