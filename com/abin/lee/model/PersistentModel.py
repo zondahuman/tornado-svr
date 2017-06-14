@@ -5,7 +5,7 @@ import json
 
 from sqlalchemy import Column, Integer, String, Date, DateTime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.orm import scoped_session, sessionmaker, relationship
 
 Base=declarative_base()
 DBSession = scoped_session(sessionmaker())
@@ -40,6 +40,7 @@ class TeamInfo(DaoUtil.Base):
     updateTime = Column("update_time", DateTime)
     version = Column("version", Integer)
 
+    orderInfo = relationship("OrderInfo", order_by="OrderInfo.id", backref="orderInfo")
 
     def __repr(self):
         return "<OrderInfo('%s','%s','%s','%s','%s','%s')>"%(self.id,self.teamName,self.orderId,self.createTime,self.updateTime,self.version)
