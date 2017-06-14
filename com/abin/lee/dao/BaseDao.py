@@ -76,6 +76,8 @@ class OrderDao():
             #     result.append(row)
             orderInfo = session.query(OrderInfo).filter_by(name=value).all()
             print orderInfo
+            orderInfo = OrderInfo.objects().all()
+            print orderInfo
             session.commit()
         except Exception, e:
             print e
