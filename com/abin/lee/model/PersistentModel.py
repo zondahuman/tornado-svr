@@ -24,7 +24,7 @@ class OrderInfo(DaoUtil.Base):
     create_time = Column(Date)
     update_time = Column(Date)
     version = Column(Integer)
-    # query = DBSession.query_property()
+    query = DBSession.query_property()
 
     def __repr(self):
         return "<OrderInfo('%s','%s','%s','%s','%s','%s')>"%(self.id,self.name,self.age,self.create_time,self.update_time,self.version)
