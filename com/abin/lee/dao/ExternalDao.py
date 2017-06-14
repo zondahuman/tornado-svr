@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding:utf-8
-from sqlalchemy import update
 
 from com.abin.lee.enums.GlobalConstants import OrderEnum
 from com.abin.lee.model.ExternalModel import LendInfo

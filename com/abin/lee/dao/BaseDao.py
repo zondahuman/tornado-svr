@@ -1,12 +1,9 @@
 #!/usr/bin/env python
 # coding:utf-8
-from sqlalchemy import update
 
 from com.abin.lee.enums.GlobalConstants import OrderEnum
 from com.abin.lee.model.PersistentModel import OrderInfo
-from com.abin.lee.util import DaoUtil,ModelUtil
-from com.abin.lee.pojo.vo import OridinaryViewObject
-from com.abin.lee.util.switch import switch
+from com.abin.lee.util import DaoUtil
 
 
 class OrderDao():
