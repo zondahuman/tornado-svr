@@ -16,7 +16,7 @@ class LendTest(unittest.TestCase):
         dictOrder["age"] = 15
         dictOrder["idNo"] = '140827199208236617'
         dictOrder["userId"] = 102
-        http_url = "http://localhost:8080/lendUserAdd"
+        http_url = "http://localhost:7600/lendUserAdd"
         content = json.dumps(dictOrder)
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"

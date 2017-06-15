@@ -12,7 +12,7 @@ class OrderTest(unittest.TestCase):
         dictOrder["name"] = "stevenjohn"
         dictOrder["age"] = 19
         dictOrder["version"] = 0
-        http_url = "http://localhost:8080/orderInsert"
+        http_url = "http://localhost:7600/orderInsert"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST"
         httpService = HttpService()
@@ -25,7 +25,7 @@ class OrderTest(unittest.TestCase):
         dictOrder["name"] = "stevenjohn"
         dictOrder["age"] = 19
         dictOrder["version"] = 0
-        http_url = "http://localhost:8080/orderPostInsert"
+        http_url = "http://localhost:7600/orderPostInsert"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST"
         httpService = HttpService()
@@ -35,7 +35,7 @@ class OrderTest(unittest.TestCase):
     def test_order_find_by_Id(self):
         dictOrder = {}
         dictOrder["id"] = 48
-        http_url = "http://localhost:8080/orderFindById"
+        http_url = "http://localhost:7600/orderFindById"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST"
         httpService = HttpService()
@@ -45,7 +45,7 @@ class OrderTest(unittest.TestCase):
     def test_order_find_all(self):
         dictOrder = {}
         dictOrder["id"] = 48
-        http_url = "http://localhost:8080/orderFindAll"
+        http_url = "http://localhost:7600/orderFindAll"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST"
         httpService = HttpService()
@@ -56,7 +56,7 @@ class OrderTest(unittest.TestCase):
         dictOrder = {}
         dictOrder["key"] = 'name'
         dictOrder["value"] = 'abin'
-        http_url = "http://localhost:8080/orderFindByParam"
+        http_url = "http://localhost:7600/orderFindByParam"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST"
         httpService = HttpService()
@@ -69,7 +69,7 @@ class OrderTest(unittest.TestCase):
         dictOrder["name"] = "stevenjohn"
         dictOrder["age"] = 19
         dictOrder["version"] = 0
-        http_url = "http://localhost:8080/orderAdd"
+        http_url = "http://localhost:7600/orderAdd"
         content = json.dumps(dictOrder)
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"
@@ -79,7 +79,7 @@ class OrderTest(unittest.TestCase):
         print "result=", result
 
     def test_order_add(self):
-        http_url = "http://localhost:8080/orderAdd?id=5&name=abin&age=25&version=0"
+        http_url = "http://localhost:7600/orderAdd?id=5&name=abin&age=25&version=0"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"
         httpService = HttpService()
@@ -88,7 +88,7 @@ class OrderTest(unittest.TestCase):
         print "result=", result
 
     def test_order_add(self):
-        http_url = "http://localhost:8080/call"
+        http_url = "http://localhost:7600/call"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"
         httpService = HttpService()
@@ -103,7 +103,7 @@ class OrderTest(unittest.TestCase):
         dictOrder["id"] = 29
         dictOrder["key"] = 'name'
         dictOrder["value"] = 'paul'
-        http_url = "http://localhost:8080/orderUpdateById"
+        http_url = "http://localhost:7600/orderUpdateById"
         dictHeader = {}
         dictHeader["source"] = "UNITTEST"
         httpService = HttpService()

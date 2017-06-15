@@ -29,7 +29,7 @@ class OrderHandler(tornado.web.RequestHandler):
         print "id=", id , " ,name=" , name , " ,create_time=" , create_time , " ,update_time=" , update_time , " ,version=" , version , " ,source=" , source
         orderService = BaseService.OrderService()
         orderEnum = orderService.insertObj(id, name, age, create_time, update_time, version)
-        self.write(orderEnum)
+        self.write(orderEnum.__str__())
 
 
 
@@ -46,7 +46,7 @@ class OrderAddPostHandler(tornado.web.RequestHandler):
         print "id=", id , " ,name=" , name , " ,create_time=" , create_time , " ,update_time=" , update_time , " ,version=" , version , " ,source=" , source
         orderService = BaseService.OrderService()
         orderEnum = orderService.insertObj(id, name, age, create_time, update_time, version)
-        self.write(orderEnum)
+        self.write(orderEnum.__str__())
 
 class OrderAddPostJsonHandler(tornado.web.RequestHandler):
     def post(self):
@@ -64,7 +64,7 @@ class OrderAddPostJsonHandler(tornado.web.RequestHandler):
         print "id=", id , " ,name=" , name , " ,create_time=" , create_time , " ,update_time=" , update_time , " ,version=" , version , " ,source=" , source
         orderService = BaseService.OrderService()
         orderEnum = orderService.insertObj(id, name, age, create_time, update_time, version)
-        self.write(orderEnum)
+        self.write(orderEnum.__str__())
 
 class OrderFindByIdandler(tornado.web.RequestHandler):
     def post(self):
@@ -102,7 +102,7 @@ class OrderUpdateByIdHandler(tornado.web.RequestHandler):
         print "key=", key, ", value=", value
         orderService = BaseService.OrderService()
         orderEnum = orderService.update_by_id(id, key, value)
-        self.write(orderEnum)
+        self.write(orderEnum.__str__())
 
 
 

@@ -40,7 +40,7 @@ class TeamInfo(DaoUtil.Base):
     updateTime = Column("update_time", DateTime)
     version = Column("version", Integer)
 
-    orderInfo = relationship("OrderInfo", order_by="OrderInfo.id", backref="orderInfo")
+    # orderInfo = relationship("OrderInfo", order_by="OrderInfo.id", backref="orderInfo")
 
     def __repr(self):
         return "<OrderInfo('%s','%s','%s','%s','%s','%s')>"%(self.id,self.teamName,self.orderId,self.createTime,self.updateTime,self.version)

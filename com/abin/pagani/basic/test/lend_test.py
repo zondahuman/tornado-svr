@@ -13,7 +13,7 @@ class LendTest(unittest.TestCase):
         dictOrder["id"] = 1
         dictOrder["user_id"] = TimeStampUtil.getTimestamp()
         dictOrder["token"] = '9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee'
-        http_url = "http://localhost:8080/externalRegion"
+        http_url = "http://localhost:7600/externalRegion"
         content = json.dumps(dictOrder)
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"
@@ -38,7 +38,7 @@ class LendTest(unittest.TestCase):
         dictOrder["id"] = 1
         dictOrder["user_id"] = TimeStampUtil.getTimestamp()
         dictOrder["token"] = '9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee'
-        http_url = "http://localhost:8080/externalNasa"
+        http_url = "http://localhost:7600/externalNasa"
         content = json.dumps(dictOrder)
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"
@@ -53,7 +53,7 @@ class LendTest(unittest.TestCase):
         dictOrder["id"] = 1
         dictOrder["user_id"] = TimeStampUtil.getTimestamp()
         dictOrder["token"] = '9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee'
-        http_url = "http://localhost:8080/externalIp"
+        http_url = "http://localhost:7600/externalIp"
         content = json.dumps(dictOrder)
         dictHeader = {}
         dictHeader["source"] = "UNITTEST1"

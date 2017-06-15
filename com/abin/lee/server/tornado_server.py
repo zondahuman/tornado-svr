@@ -19,7 +19,7 @@ from com.abin.lee.controller.ExternalController import ExternalNasaHandler, Exte
 from com.abin.lee.controller.LendUserController import LendUserInfoHandler
 from com.abin.lee.controller.TeamController import TeamAddHandler
 
-define ("port", default=8080, help="run on the given port", type=int)
+define ("port", default=7600, help="run on the given port", type=int)
 
 
 if __name__ == '__main__':
