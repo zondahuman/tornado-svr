@@ -9,7 +9,7 @@ import tornado.web
 import tornado.gen
 import tornado.httpclient
 from com.abin.lee.enums.GlobalConstants import OrderEnum
-from com.abin.lee.service import BaseService
+from com.abin.lee.service import OrderService
 from com.abin.lee.pojo.vo import OridinaryViewObject
 
 #  http://localhost:8080/orderAdd?id=5&name=abin&age=25&version=0
@@ -27,7 +27,7 @@ class OrderHandler(tornado.web.RequestHandler):
         update_time = datetime.datetime.now()
         source = self.request.headers['source']
         print "id=", id , " ,name=" , name , " ,create_time=" , create_time , " ,update_time=" , update_time , " ,version=" , version , " ,source=" , source
-        orderService = BaseService.OrderService()
+        orderService = OrderService.OrderInfoService()
         orderEnum = orderService.insertObj(id, name, age, create_time, update_time, version)
         self.write(orderEnum.__str__())
 
@@ -44,7 +44,7 @@ class OrderAddPostHandler(tornado.web.RequestHandler):
         update_time = datetime.datetime.now()
         source = self.request.headers['source']
         print "id=", id , " ,name=" , name , " ,create_time=" , create_time , " ,update_time=" , update_time , " ,version=" , version , " ,source=" , source
-        orderService = BaseService.OrderService()
+        orderService = OrderService.OrderInfoService()
         orderEnum = orderService.insertObj(id, name, age, create_time, update_time, version)
         self.write(orderEnum.__str__())
 
@@ -62,7 +62,7 @@ class OrderAddPostJsonHandler(tornado.web.RequestHandler):
         update_time = datetime.datetime.now()
         source = self.request.headers['source']
         print "id=", id , " ,name=" , name , " ,create_time=" , create_time , " ,update_time=" , update_time , " ,version=" , version , " ,source=" , source
-        orderService = BaseService.OrderService()
+        orderService = OrderService.OrderInfoService()
         orderEnum = orderService.insertObj(id, name, age, create_time, update_time, version)
         self.write(orderEnum.__str__())
 
@@ -70,28 +70,28 @@ class OrderFindByIdandler(tornado.web.RequestHandler):
     def post(self):
         id = self.get_argument('id')
         print "id=", id
-        orderService = BaseService.OrderService()
+        orderService = OrderService.OrderInfoService()
         orderInfo = orderService.find_by_id(id)
         result = json.dumps(orderInfo)
         self.write(result)
 
 class OrderFindAllHandler(tornado.web.RequestHandler):
     def post(self):
-        orderService = BaseService.OrderService()
-        orderInfo = orderService.find_by_all()
+        orderService = OrderService.OrderInfoService()
+        result = orderService.find_by_all()
         # result = simplejson.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean)
-        result = simplejson.dumps(orderInfo)
-        self.write(result)
+        # result = simplejson.dumps(orderInfo)
+        self.write(result.__str__())
 
 class OrderFindByParamHandler(tornado.web.RequestHandler):
     def post(self):
         key = self.get_argument('key')
         value = self.get_argument('value')
         print "key=", key, ", value=", value
-        orderService = BaseService.OrderService()
-        orderInfo = orderService.find_by_params(key, value)
-        result = json.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean)
-        self.write(result)
+        orderService = OrderService.OrderInfoService()
+        result = orderService.find_by_params(key, value)
+        # result = json.dumps(orderInfo, default= OridinaryViewObject.encode_json_bean)
+        self.write(result.__str__())
 
 class OrderUpdateByIdHandler(tornado.web.RequestHandler):
     def post(self):
@@ -100,7 +100,7 @@ class OrderUpdateByIdHandler(tornado.web.RequestHandler):
         key = self.get_argument('key')
         value = self.get_argument('value')
         print "key=", key, ", value=", value
-        orderService = BaseService.OrderService()
+        orderService = OrderService.OrderInfoService()
         orderEnum = orderService.update_by_id(id, key, value)
         self.write(orderEnum.__str__())
 

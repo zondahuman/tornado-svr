@@ -27,6 +27,10 @@ class LendInfo(DaoUtil.Base):
     update_time = Column("update_time", DateTime)
     version = Column("version", Integer)
 
+    def __repr__(self):
+        return '%s (%r, %r, %r, %r, %r, %r, %r, %r, %r)' % (
+        self.__class__.__name__, self.id, self.lend_id,self.request_content,self.response_content,self.status,self.user_id,self.create_time,self.update_time,self.version)
+
 class LendUser(DaoUtil.Base):
     __tablename__ =  'lend_user'
 
@@ -40,3 +44,39 @@ class LendUser(DaoUtil.Base):
     createTime = Column("create_time", DateTime)
     updateTime = Column("update_time", DateTime)
     version = Column("version", Integer)
+
+    def __repr__(self):
+        return '%s (%r, %r, %r, %r, %r, %r, %r, %r, %r, %r)' % (
+        self.__class__.__name__, self.id, self.lendId,self.userName,self.email,self.age,self.idNo,self.userId,self.createTime,self.updateTime,self.version)
+
+
+class LendBank(DaoUtil.Base):
+    __tablename__ =  'lend_bank'
+
+    id = Column("id", Integer, primary_key=True)
+    bankNo = Column("bank_No", String(100), nullable=False)
+    bankName = Column("bank_name", String(500))
+    createTime = Column("create_time", DateTime)
+    updateTime = Column("update_time", DateTime)
+    version = Column("version", Integer)
+
+    def __repr__(self):
+        return '%s (%r, %r, %r, %r, %r, %r)' % (
+        self.__class__.__name__, self.id, self.bankNo,self.bankName,self.createTime,self.updateTime,self.version)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

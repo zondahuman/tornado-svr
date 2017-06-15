@@ -26,7 +26,8 @@ class OrderInfo(DaoUtil.Base):
     version = Column(Integer)
     query = DBSession.query_property()
 
-    def __repr(self):
+    def __repr__(self):
+        # return "<OrderInfo('%s','%s','%s','%s','%s','%s')>"%(self.id,self.name,self.age,self.create_time,self.update_time,self.version)
         return "<OrderInfo('%s','%s','%s','%s','%s','%s')>"%(self.id,self.name,self.age,self.create_time,self.update_time,self.version)
 
 
@@ -42,7 +43,7 @@ class TeamInfo(DaoUtil.Base):
 
     # orderInfo = relationship("OrderInfo", order_by="OrderInfo.id", backref="orderInfo")
 
-    def __repr(self):
+    def __repr__(self):
         return "<OrderInfo('%s','%s','%s','%s','%s','%s')>"%(self.id,self.teamName,self.orderId,self.createTime,self.updateTime,self.version)
 
 

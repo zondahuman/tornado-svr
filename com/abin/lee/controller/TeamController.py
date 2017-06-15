@@ -21,7 +21,7 @@ class TeamAddHandler(tornado.web.RequestHandler):
         print "id=", id , " ,teamName=" , teamName , " ,orderId=" , orderId
         teamService = TeamService.TeamInfoService()
         messageEnum = teamService.insert(id, teamName, orderId)
-        self.write(messageEnum)
+        self.write(messageEnum.__str__())
 
 
 
